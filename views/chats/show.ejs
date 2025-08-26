@@ -1,0 +1,36 @@
+<% layout('partials/boilerplate') %>
+
+<h2>Chat with <%= contactName %></h2>
+
+<div id="chat-window" class="mb-4">
+  <% if (chats && chats.length > 0) { %>
+    <% chats.forEach(chat => { %>
+      <div class="card p-2 mb-2">
+        <p><strong>From:</strong> <%= chat.from %></p>
+        <p><strong>To:</strong> <%= chat.to %></p>
+        <p><%= chat.msz %></p>
+        <small><%= chat.createdAt.toLocaleString() %></small>
+        <div class="mt-1">
+          <a href="/chats/<%= chat._id %>/edit" class="btn btn-outline-success btn-sm">Edit</a>
+          <form method="POST" action="/chats/<%= chat._id %>?_method=DELETE" class="d-inline">
+              <button class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No messages yet with <%= contactName %>.</p>
+  <% } %>
+</div>
+
+<h5>Send a message</h5>
+<form method="POST" action="/chats">
+    <div class="mb-2">
+        <input type="text" name="chat[from]" placeholder="Your Name" class="form-control" required>
+    </div>
+    <div class="mb-2">
+        <textarea name="chat[msz]" placeholder="Type message" class="form-control" required></textarea>
+    </div>
+    <input type="hidden" name="chat[to]" value="<%= contactName %>">
+    <button class="btn btn-primary btn-sm">Send</button>
+</form>

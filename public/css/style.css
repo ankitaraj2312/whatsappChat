@@ -1,0 +1,119 @@
+/* General body style */
+body {
+    background-color: #e5ddd5; /* WhatsApp light green-ish background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container for chat cards */
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+/* Chat card */
+.chat-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Hover effect */
+.chat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Chat bubbles */
+.chat-card p {
+    margin: 5px 0;
+}
+
+/* From and To labels */
+.chat-card b {
+    color: #075E54; /* WhatsApp green */
+}
+
+/* New Chat button */
+.btn-primary {
+    background-color: #25D366;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #128C7E;
+}
+
+/* Edit and Delete buttons */
+.btn-success {
+    background-color: #34B7F1;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #0b93d5;
+}
+
+.btn-danger {
+    background-color: #ff4d4d;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #e60000;
+}
+
+/* Chat message bubble */
+.chat-card .message {
+    background-color: #dcf8c6;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 80%;
+}
+
+/* Small emoji-like dots */
+.emoji {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* Scrollable chat container if you have many chats */
+.container {
+    max-height: 90vh;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+body {
+    background-color: #e5ddd5;
+}
+
+.chat-box {
+    background-color: #ffffff;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.chat-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+/*remove underline from the all anchor tag*/
+a{
+    text-decoration: none;
+    color: inherit; /*for hand finger*/
+}
+
+a:hover {
+    text-decoration: none;
+    color: #0d6efd;
+}
+a.active-contact {
+    background-color: #25D366; /* WhatsApp green-->if we click on the any name(anchor tag) */
+    color: white;
+    font-weight: bold;
+}

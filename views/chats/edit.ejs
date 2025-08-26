@@ -1,0 +1,11 @@
+<% layout('partials/boilerplate') %>
+
+<h2>Edit Message</h2>
+<p><strong>From:</strong> <%= chat.from %> | <strong>To:</strong> <%= chat.to %></p>
+
+<form method="POST" action="/chats/<%= chat._id %>?_method=PUT">
+  <div class="mb-3">
+    <input name="chat[msz]" value="<%= chat.msz %>" type="text" class="form-control" required>
+  </div>
+  <button class="btn btn-success">Update</button>
+</form>

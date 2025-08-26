@@ -1,0 +1,56 @@
+<% layout('partials/boilerplate') %>
+
+<div class="container mt-5">
+  <h2 class="text-center text-success mb-4">Dashboard</h2>
+
+  <!-- Welcome -->
+  <div class="alert alert-info text-center">
+    Welcome, <%= user ? user.username : "User" %>!
+  </div>
+
+  <!-- Contacts Section -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-success text-white">
+      Contacts
+    </div>
+    <div class="card-body">
+      <% if (contacts && contacts.length > 0) { %>
+        <ul class="list-group">
+          <% contacts.forEach(c => { %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= c.name %>
+              <span class="badge bg-primary rounded-pill">Chat</span>
+            </li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p class="text-muted">No contacts available.</p>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- Chats Section -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+      Chats
+    </div>
+    <div class="card-body">
+      <% if (chats && chats.length > 0) { %>
+        <% chats.forEach(chat => { %>
+          <div class="border rounded p-2 mb-2">
+            <strong><%= chat.sender %>:</strong> <%= chat.message %>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p class="text-muted">No chats yet.</p>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- Logout Button -->
+  <div class="text-center mt-4">
+    <form method="POST" action="/logout">
+      <button type="submit" class="btn btn-danger w-100">Logout</button>
+    </form>
+  </div>
+</div>

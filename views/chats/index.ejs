@@ -1,0 +1,26 @@
+<% layout('partials/boilerplate') %>
+
+<h2>Chat with <%= contactName %></h2>
+
+<% chats.forEach(chat => { %>
+  <div class="card p-3 mb-2 chat-box">
+    <p><strong>From:</strong> <%= chat.from %></p>
+    <p><strong>To:</strong> <%= chat.to %></p>
+    <p><%= chat.msz %></p>
+    <small class="text-muted"><%= chat.createdAt.toLocaleString() %></small>
+    <div class="mt-2">
+      <a href="/chats/<%= chat._id %>/edit" class="btn btn-sm btn-outline-success">Edit</a>
+    </div>
+  </div>
+<% }) %>
+
+<form method="POST" action="/chats">
+  <input type="hidden" name="chat[to]" value="<%= contactName %>">
+  <div class="mb-3">
+    <input type="text" name="chat[from]" placeholder="Your Name" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <input type="text" name="chat[msz]" placeholder="Message" class="form-control" required>
+  </div>
+  <button class="btn btn-success">Send</button>
+</form>
