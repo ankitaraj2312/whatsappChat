@@ -21,9 +21,14 @@ mongoose.connect("mongodb://127.0.0.1:27017/whatsappChat")
   .then(() => console.log("Connected to DB"))
   .catch(err => console.log(err));
 
-// ==================== CONTACTS ====================
+// ==================== ROUTES ====================
 
-// Show all contacts
+// Home Page
+app.get("/", (req, res) => {
+  res.render("home", { title: "Home" });
+});
+
+// Contacts
 app.get("/contacts", async (req, res) => {
   const chats = await Chat.find();
   const contactsSet = new Set();
@@ -48,17 +53,11 @@ app.post("/contacts", async (req, res) => {
   res.redirect("/contacts");
 });
 
-// ==================== CHATS ====================
-
-// Show chat with a contact
+// Chats
 app.get("/chats/:contactName", async (req, res) => {
   const contactName = req.params.contactName;
-
   const chats = await Chat.find({
-    $or: [
-      { from: contactName },
-      { to: contactName }
-    ]
+    $or: [{ from: contactName }, { to: contactName }]
   }).sort({ createdAt: 1 });
 
   res.render("chats/show", { contactName, chats });
@@ -97,6 +96,7 @@ app.delete("/chats/:id", async (req, res) => {
   res.redirect(`/chats/${contactName}`);
 });
 
+// Start server
 app.listen(8080, () => {
   console.log("Chat server running on port 8080");
 });

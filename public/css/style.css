@@ -88,8 +88,13 @@ body {
     overflow-y: auto;
     padding-bottom: 20px;
 }
-body {
-    background-color: #e5ddd5;
+/* Remove extra scrollbars */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* hide horizontal scrollbar */
+    /*overflow-y: auto;   /* only main vertical scrollbar */
 }
 
 .chat-box {
@@ -116,4 +121,11 @@ a.active-contact {
     background-color: #25D366; /* WhatsApp green-->if we click on the any name(anchor tag) */
     color: white;
     font-weight: bold;
+}
+body {
+  overflow-y: scroll; /* only the main scrollbar */
+}
+
+.container {
+  overflow: visible; /* remove inner scrollbar */
 }
